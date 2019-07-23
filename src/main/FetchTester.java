@@ -1,11 +1,20 @@
 package main;
 
+/**
+ * Tester class for API calls
+ */
 public class FetchTester
 {
    public static void main(String[] args)
    {
-      FetchNHL f = new FetchNHL("Red Wings"); /* TODO Team isn't being taken into account */
-      System.out.println("Date: " + f.getDate());
-      System.out.println("League: " + f.getLeague());
+      // NHL
+      NHL nhl = new NHL("2019", "7", "22");
+      System.out.println("Date: " + nhl.getDate());
+      System.out.println("League: " + nhl.getLeague() + "\n");
+      for (int i = 0; i < 4; i++)
+      {
+         System.out.println(nhl.getGamesTeam(i, "away") + " @ " + nhl.getGamesTeam(i, "home"));
+         System.out.println("Venue: " + nhl.getGamesVenue(i) + "\n");
+      }
    }
 }
