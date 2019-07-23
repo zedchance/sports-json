@@ -13,7 +13,8 @@ public class FetchTester
       System.out.println("League: " + nhl.getLeague() + "\n");
       for (int i = 0; i < 4; i++)
       {
-         System.out.println(nhl.getGamesTeam(i, "away") + " @ " + nhl.getGamesTeam(i, "home"));
+         System.out.println(nhl.getGamesTeam(i, "away", "alias") + " @ " +
+                            nhl.getGamesTeam(i, "home", "alias"));
          System.out.println("Venue: " + nhl.getGamesVenue(i) + "\n");
       }
    }

@@ -80,11 +80,12 @@ public class NHL
     * Returns name of team
     * @param index of game
     * @param team "home" or "away"
+    * @param type "name" for full name, "alias" for short name
     * @return name of team as String
     */
-   String getGamesTeam(int index, String team)
+   String getGamesTeam(int index, String team, String type)
    {
-      return getGame(index).get(team).getAsJsonObject().get("name").getAsString();
+      return getGame(index).get(team).getAsJsonObject().get(type).getAsString();
    }
 
    /**
