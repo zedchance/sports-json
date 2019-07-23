@@ -66,10 +66,13 @@ public class NHL
       return results.getAsJsonObject().get("league").getAsJsonObject().get("name").getAsString();
    }
 
-   /* TODO FIX THIS */
+   /**
+    * Checks if the search contains results
+    * @return boolean of success of search
+    */
    boolean isSuccessful()
    {
-      return results.getAsJsonObject().get("games").isJsonArray();
+      return results.getAsJsonObject().get("games") != null;
    }
 
    /**
@@ -90,6 +93,7 @@ public class NHL
    String getTime(int index)
    {
       return getGame(index).get("scheduled").getAsString().substring(11, 16);
+      /* TODO Make this not dependent on hard coded substring */
    }
 
    /**
