@@ -66,6 +66,12 @@ public class NHL
       return results.getAsJsonObject().get("league").getAsJsonObject().get("name").getAsString();
    }
 
+   /* TODO FIX THIS */
+   boolean isSuccessful()
+   {
+      return results.getAsJsonObject().get("games").isJsonArray();
+   }
+
    /**
     * Gets the game from the JSON object
     * @param index of game
@@ -74,6 +80,16 @@ public class NHL
    private JsonObject getGame(int index)
    {
       return results.getAsJsonObject().get("games").getAsJsonArray().get(index).getAsJsonObject();
+   }
+
+   /**
+    * Gets time of game
+    * @param index of game
+    * @return time as String
+    */
+   String getTime(int index)
+   {
+      return getGame(index).get("scheduled").getAsString().substring(11, 16);
    }
 
    /**
@@ -91,10 +107,11 @@ public class NHL
    /**
     * Gets the venue for a game
     * @param index of game
+    * @param stat "name", "address", "city", "state", "zip", "country", "time_zone", "capacity"
     * @return venue as String
     */
-   String getGamesVenue(int index)
+   String getGamesVenue(int index, String stat)
    {
-      return getGame(index).get("venue").getAsJsonObject().get("name").getAsString();
+      return getGame(index).get("venue").getAsJsonObject().get(stat).getAsString();
    }
 }
